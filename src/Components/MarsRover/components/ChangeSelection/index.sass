@@ -1,0 +1,25 @@
+@import 'variables.sass'
+#ChangeSelection
+    position: fixed
+    width: 100vw
+    bottom: 0px
+    background-color: #000000eb
+    display: flex
+    justify-content: center
+    align-items: center
+    .rovers
+        margin-right: 20px
+        button
+            border-color: $marsRed
+            color: $marsRed
+            &.active
+                background-color: $marsRed
+                color: white
+    .solSelect
+        input
+    #submitChangeSelection
+        margin-left: 20px
+        button
+            border-color: $marsRed
+            background-color: $marsRed
+

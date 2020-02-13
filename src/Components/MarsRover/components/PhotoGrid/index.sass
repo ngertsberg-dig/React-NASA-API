@@ -1,0 +1,27 @@
+$photoMarginLeftRight: 25px
+#PhotoGrid
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    padding: 25px 0px
+    .individual-rover-photo
+        margin: 0px $photoMarginLeftRight
+        flex-basis: calc(25% - #{$photoMarginLeftRight * 2})
+        position: relative
+        .rover-photo-image
+            position: relative
+            width: 100%
+            img
+                width: 100%
+               
+        .rover-photo-description
+            p
+                display: block
+                span
+                    display: block
+            .earth-date
+                p
+                    span
+            .camera-description
+                p
+                    span
