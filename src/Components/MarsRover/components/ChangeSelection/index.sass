@@ -11,6 +11,7 @@
     display: flex
     justify-content: center
     align-items: center
+    padding: 10px 0px
     +tablet
         flex-direction: column
         padding: 10px 0px
@@ -19,6 +20,11 @@
         button
             border-color: $marsRed
             color: $marsRed
+            .MuiButton-label
+                display: flex
+                flex-direction: column
+            small
+                font-size: 10px
             &.active
                 background-color: $marsRed
                 color: white

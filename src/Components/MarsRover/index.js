@@ -2,6 +2,7 @@ import React from 'react';
 import Selection from './components/Selection';
 import RoverView from './components/RoverView';
 
+
 class MarsRover extends React.Component{
     constructor(){
         super();
@@ -20,9 +21,10 @@ class MarsRover extends React.Component{
     clearLoading(){
         this.setState({loading:false})
     }
+
     render(){
         let currentView;
-        if(!this.state.rover && !this.state.loading || !this.state.sol && !this.state.loading){
+        if(this.state.rover === null && !this.state.loading || this.state.sol === null && !this.state.loading){
             currentView = <Selection setLoading = {this.setLoading.bind(this)} SelectionSet = {this.SelectionSet.bind(this)} />
         }else{
             currentView = <RoverView setLoading ={this.setLoading.bind(this)} clearLoading = {this.clearLoading.bind(this)} SelectionSet = {this.SelectionSet.bind(this)} state = {this.state} />

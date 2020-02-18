@@ -1,7 +1,27 @@
+$notificationWidth: 300px
 #App
     background-color: black
     min-height: 100vh
     color: white
+    position: relative
+    .notification
+        z-index: 999
+        position: fixed
+        bottom: -100px
+        width: $notificationWidth
+        left: calc(50% - (#{$notificationWidth} / 2))
+        border-radius: 4px
+        transition: transform 0.5s ease
+        &.fly-in
+            transform: translateY(-125px)
+        &.fly-out
+            transform: translateY(0px)
+        &.error
+            background-color: red
+        &.warning
+            background-color: orange
+        &.success
+            background-color: green
 h1
     margin: 0px
 .particles-background

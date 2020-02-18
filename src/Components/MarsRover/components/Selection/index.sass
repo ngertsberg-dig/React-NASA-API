@@ -16,10 +16,16 @@
                 justify-content: flex-end
                 border: 1px solid $marsRed
                 border-radius: 4px
+                transition: transform 0.35s ease
+                .max-sol
+                    p
+                        margin:  5px 0px
+                        margin-bottom: 10px
                 &.active
                     -webkit-box-shadow: -8px 5px 30px 0px $marsRedBoxShadow
                     -moz-box-shadow: -8px 5px 30px 0px $marsRedBoxShadow
                     box-shadow: -8px 5px 30px 0px $marsRedBoxShadow
+                    transform: translateY(-20px)
                 &:hover
                     cursor: pointer
                     -webkit-box-shadow: -8px 5px 30px 0px $marsRedBoxShadow
@@ -30,6 +36,7 @@
                         max-width: 200px
                 .rover-name
                     p
+                        margin: 5px 0px
                 &:nth-child(2)
                     margin: 0px 10px
         .solSelect

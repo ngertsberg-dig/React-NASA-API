@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import rovers from 'Components/MarsRover/RoverList';
+import Notification from 'Components/shared/Notification';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,9 +14,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-
-
-
 
 const Selection = ( props ) => {
     const [roverSelection, setRover] = useState(null);
@@ -42,11 +40,11 @@ const Selection = ( props ) => {
         }
         else{
             if(!solSelection && !roverSelection)
-                alert("Please input a Sol date and select a rover to view!")
+                new Notification("Please input a Sol date and select a rover to view!","error");
             else if(!solSelection && roverSelection)
-                alert("Please input a Sol date!")
+                new Notification("Please input a Sol date!","error");
             else if(solSelection && !roverSelection)
-                alert("Please choose a rover!")
+                new Notification("Please choose a rover!","error");
         }
     }
 
@@ -62,6 +60,9 @@ const Selection = ( props ) => {
                                 </div>
                                 <div className='rover-name'>
                                     <p>{el.name}</p>
+                                </div>
+                                <div className = 'max-sol'>
+                                    <p>Sol range: {el.minSol} - {el.maxSol}</p>
                                 </div>
                             </div>
                         ))
@@ -84,4 +85,5 @@ const Selection = ( props ) => {
         </div>
     )
 }
+
 export default Selection;

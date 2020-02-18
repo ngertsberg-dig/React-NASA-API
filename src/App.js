@@ -3,6 +3,7 @@ import './App.css';
 import MarsRover from './Components/MarsRover';
 import './index.sass';
 import Particles from 'react-particles-js';
+
 function App() {
   return (
     <div className="App" id = "App">
@@ -10,6 +11,7 @@ function App() {
         <MarsRover />
       </div>
       <Particles className = "particles-background"/>
+
     </div>
   );
 }

@@ -21,7 +21,7 @@ class RoverView extends React.Component{
     }
     componentDidUpdate(){
         const { loading, rover, sol } = this.props.state;
-        if(loading && rover && sol){
+        if(loading && rover && sol >= 0){
             this.fetchPhotos();
         }
     }

@@ -17,15 +17,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
 const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, refetch, resetPhotos }) => {
     const [changedRover, setRover] = useState(rover);
     const [changedSol, setSol] = useState(sol);
     const didMount = useRef(false);
 
     const GetNewImages = () => {
-        if(changedRover && changedSol){
+        if(changedRover && changedSol >= 0){
             setLoading();
             resetPhotos();
             SelectionSet(changedSol,changedRover);
@@ -70,9 +68,9 @@ const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, r
                 <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
                     {rovers.map((el,index)=>{
                         if(el.data === rover){
-                            return <Button onClick = {() => changeCurrentRover(el.data)} className = {`active ${el.data}`} key = {index}>{el.name}</Button>
+                            return <Button onClick = {() => changeCurrentRover(el.data)} className = {`active ${el.data}`} key = {index}>{el.name}<small>{el.minSol} - {el.maxSol}</small></Button>
                         }else{
-                            return <Button onClick = {() => changeCurrentRover(el.data)} className = {`${el.data}`} key = {index}>{el.name}</Button>
+                            return <Button onClick = {() => changeCurrentRover(el.data)} className = {`${el.data}`} key = {index}>{el.name}<small>{el.minSol} - {el.maxSol}</small></Button>
                         }
 
                     })}
