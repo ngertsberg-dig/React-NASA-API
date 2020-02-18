@@ -6,8 +6,8 @@ class MarsRover extends React.Component{
     constructor(){
         super();
         this.state = {
-            rover: "spirit",
-            sol: 26,
+            rover: null,
+            sol: null,
             loading: false
         }
     }
