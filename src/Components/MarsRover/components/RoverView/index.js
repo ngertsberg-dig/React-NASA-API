@@ -4,6 +4,8 @@ import PhotoGrid from '../PhotoGrid/';
 import ChangeSelection from '../ChangeSelection/';
 import './index.sass';
 import Loading from '../Loading';
+import ImageModal from '../ImageModal/';
+
 class RoverView extends React.Component{
     constructor(){
         super();
@@ -59,6 +61,7 @@ class RoverView extends React.Component{
                     refetch = {this.refetch.bind(this)}
                     resetPhotos = {this.resetPhotos.bind(this)}
                 />
+                <ImageModal />
             </div>
         )
     }

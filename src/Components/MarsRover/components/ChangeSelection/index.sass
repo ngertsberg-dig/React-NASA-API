@@ -1,4 +1,8 @@
 @import 'variables.sass'
+
+=tablet
+    @media(max-width:900px)
+        @content
 #ChangeSelection
     position: fixed
     width: 100vw
@@ -7,6 +11,9 @@
     display: flex
     justify-content: center
     align-items: center
+    +tablet
+        flex-direction: column
+        padding: 10px 0px
     .rovers
         margin-right: 20px
         button
@@ -17,9 +24,35 @@
                 color: white
     .solSelect
         input
+        +tablet
+            padding: 10px 0px
     #submitChangeSelection
         margin-left: 20px
         button
             border-color: $marsRed
             background-color: $marsRed
+        +tablet
+            padding-bottom: 10px
+#changeSolUpDown
+    display: flex
+    margin-left: 20px
+    .sol-button
+        margin-left: 5px
+        background-color: $marsRed
+        border-radius: 4px
+        display: flex
+        justify-content: center
+        align-items: center
+        &:hover
+            cursor: pointer
+        img
+            max-height: 36px
+            max-width: 25px
+            padding: 5px
+            &:hover
+        &:nth-child(1)
+            margin-left: 0px
+        &:nth-child(1)
+            img
+                transform: rotateZ(180deg)
 

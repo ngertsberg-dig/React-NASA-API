@@ -8,11 +8,17 @@ $photoMarginLeftRight: 25px
         margin: 0px $photoMarginLeftRight
         flex-basis: calc(25% - #{$photoMarginLeftRight * 2})
         position: relative
+        @media(max-width:767px)
+            flex-basis: calc(50% - #{$photoMarginLeftRight * 2})
+            @media(max-width:500px)
+                flex-basis: calc(100% - #{$photoMarginLeftRight * 2})
         .rover-photo-image
             position: relative
             width: 100%
             img
                 width: 100%
+                &:hover
+                    cursor: pointer
                
         .rover-photo-description
             p

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './index.sass';
 import SolSelect from 'Components/shared/SolSelect';
 import Button from '@material-ui/core/Button';
@@ -17,9 +17,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
 const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, refetch, resetPhotos }) => {
     const [changedRover, setRover] = useState(rover);
     const [changedSol, setSol] = useState(sol);
+    const didMount = useRef(false);
 
     const GetNewImages = () => {
         if(changedRover && changedSol){
@@ -27,6 +30,7 @@ const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, r
             resetPhotos();
             SelectionSet(changedSol,changedRover);
             refetch();
+            didMount.current = false;
         }
         else{
             alert("There was an error with the input!");
@@ -47,6 +51,19 @@ const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, r
         document.querySelector(`#ChangeSelection .rovers button.${data}`).classList.add("active")
         setRover(data);
     }
+
+    const solButtonClick = type => {
+        const add = type === "+" ? true : false;
+        let newSol = changedSol;
+        add ? newSol++ : newSol--;
+        didMount.current = true;
+        document.querySelector("input#solInput").value = newSol;
+        setSol(newSol);
+    }
+    useEffect(()=>{
+        didMount.current ? GetNewImages() : didMount.current = false;
+    },[changedSol]);
+
     return(
         <div id = 'ChangeSelection'>
             <div className = 'rovers'>
@@ -67,8 +84,22 @@ const ChangeSelection = ({ rover, sol, SelectionSet, clearLoading, setLoading, r
                     SUBMIT
                 </Button>
             </div>
+            <div id = 'changeSolUpDown'>
+                <SolButton type = "increment" click = "+" clicked = {solButtonClick} />
+                <SolButton type = "decrement" click = "-" clicked = {solButtonClick} />
+            </div>
         </div>
     )
 }
+
+const SolButton = ({ type, click, clicked }) => {
+    return( 
+        <div className = {`sol-button ${type}-sol`} onClick = {(event)=>clicked(click)}> 
+            <img src = "/arrows/chevron.png" />
+        </div>
+    )
+}
+
+
 
 export default ChangeSelection;
